@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import collegeGroup from "@assets/30x40_1753381443073.jpg";
+import graduationCeremony from "@assets/DSC_6363_1753381443075.jpg";
+import collegeEvents from "@assets/WhatsApp Image 2024-11-14 at 1.36.23 PM_1753381443076.jpeg";
 
 interface HeroProps {
   onExploreClick: () => void;
@@ -12,15 +15,15 @@ export default function Hero({ onExploreClick, onContactClick }: HeroProps) {
   // College photos for slideshow
   const collegeImages = [
     {
-      src: "/attached_assets/30x40_1753381443073.jpg",
+      src: collegeGroup,
       alt: "College students and faculty group photo"
     },
     {
-      src: "/attached_assets/DSC_6363_1753381443075.jpg", 
+      src: graduationCeremony,
       alt: "College graduation ceremony"
     },
     {
-      src: "/attached_assets/WhatsApp Image 2024-11-14 at 1.36.23 PM_1753381443076.jpeg",
+      src: collegeEvents,
       alt: "College activities and events"
     }
   ];
