@@ -36,8 +36,9 @@ This project is structured for easy deployment on various platforms while mainta
 
 ## Build Process
 - Frontend builds to: `dist/public/`
-- Backend builds to: `dist/index.js`
-- Static assets are properly handled by Vite
+- Static assets (CSS, JS, images) are placed in `dist/public/assets/`
+- HTML file references built assets correctly
+- Vercel serves assets from the `/assets/` directory
 
 ## Important Notes
 - The current structure is optimized for full-stack deployment
