@@ -15,10 +15,13 @@ This project is structured for easy deployment on various platforms while mainta
 
 ## Deployment Options
 
-### Option 1: Vercel (Recommended)
+### Option 1: Vercel (Frontend Only - Recommended for Static Site)
+**Important**: This deployment serves only the frontend as a static site. The contact form and course data will work with the pre-loaded data.
+
 1. The included `vercel.json` configures the build properly
 2. Upload the entire project to Vercel
-3. Vercel will automatically detect the framework and build
+3. Vercel will build and serve the static frontend
+4. All course information and basic functionality will work
 
 ### Option 2: Netlify
 1. The included `netlify.toml` configures the deployment
