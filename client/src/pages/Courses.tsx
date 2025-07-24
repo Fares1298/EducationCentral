@@ -41,10 +41,19 @@ export default function Courses() {
     refetchOnWindowFocus: false,
     staleTime: 5 * 60 * 1000, // 5 minutes
     gcTime: 10 * 60 * 1000, // 10 minutes
+    retryDelay: attemptIndex => Math.min(1000 * 2 ** attemptIndex, 30000)
   });
+
+  // Log success/error outside the query
+  if (coursesData && !isLoading) {
+    console.log('Courses loaded successfully:', coursesData?.data?.length || 0, 'courses');
+  }
+  if (isError && error) {
+    console.error('Courses query failed:', error);
+  }
   
   // Filter courses based on search term
-  const filteredCourses = coursesData?.data ? coursesData.data.filter(course => 
+  const filteredCourses = coursesData?.data ? coursesData.data.filter((course: CourseType) => 
     course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     course.overview.toLowerCase().includes(searchTerm.toLowerCase())
   ) : [];

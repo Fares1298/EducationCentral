@@ -49,16 +49,33 @@ export const getQueryFn: <T>(options: {
       throw new Error('Invalid queryKey format');
     }
     
+    // Add detailed logging for debugging
+    console.log(`[Query] Making request to: ${url}`);
+    
     const res = await fetch(url, {
       credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
     });
 
+    console.log(`[Query] Response status: ${res.status} for ${url}`);
+
     if (unauthorizedBehavior === "returnNull" && res.status === 401) {
+      console.log(`[Query] Unauthorized access to ${url}`);
       return null;
     }
 
-    await throwIfResNotOk(res);
-    return await res.json();
+    if (!res.ok) {
+      const errorText = await res.text();
+      console.error(`[Query] Request failed for ${url}: ${res.status} - ${errorText}`);
+      throw new Error(`${res.status}: ${errorText || res.statusText}`);
+    }
+
+    const jsonData = await res.json();
+    console.log(`[Query] Success for ${url}:`, jsonData.success ? 'Data loaded successfully' : 'API returned success: false');
+    return jsonData;
   };
 
 export const queryClient = new QueryClient({
