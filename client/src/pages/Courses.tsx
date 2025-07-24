@@ -35,9 +35,9 @@ const courseIcons: Record<string, IconDefinition> = {
 export default function Courses() {
   const [searchTerm, setSearchTerm] = useState("");
   
-  const { data: coursesData, isLoading, error } = useQuery<{ success: boolean, data: CourseType[] }>({ 
+  const { data: coursesData, isLoading, error, isError } = useQuery<{ success: boolean, data: CourseType[] }>({ 
     queryKey: ["/api/courses"],
-    retry: 2,
+    retry: 3,
     refetchOnWindowFocus: false,
     staleTime: 5 * 60 * 1000, // 5 minutes
     gcTime: 10 * 60 * 1000, // 10 minutes
@@ -111,9 +111,20 @@ export default function Courses() {
                   </div>
                 ))}
               </div>
-            ) : error ? (
+            ) : isError || error ? (
               <div className="text-center py-20">
-                <p className="text-red-500">Failed to load courses. Please try again later.</p>
+                <p className="text-red-500 mb-4">Failed to load courses. Please try again later.</p>
+                {error && (
+                  <div className="text-sm text-gray-600 bg-gray-100 p-4 rounded-lg max-w-lg mx-auto">
+                    <p><strong>Error details:</strong> {error.message}</p>
+                  </div>
+                )}
+                <button 
+                  onClick={() => window.location.reload()} 
+                  className="mt-4 px-6 py-2 bg-[#172f4f] text-white rounded-lg hover:bg-[#0b1a2f] transition-colors"
+                >
+                  Refresh Page
+                </button>
               </div>
             ) : (
               <>
