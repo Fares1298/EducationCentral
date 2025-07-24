@@ -92,6 +92,14 @@ export default function Gallery() {
     return () => clearInterval(interval);
   }, []);
 
+  // Preload images for faster loading
+  useEffect(() => {
+    galleryImages.forEach((image) => {
+      const img = new Image();
+      img.src = image.src;
+    });
+  }, []);
+
   return (
     <section id="gallery" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -103,7 +111,7 @@ export default function Gallery() {
         </div>
         
         {/* 2x2 Grid Gallery */}
-        <div className="grid grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-2 gap-4 max-w-3xl mx-auto sm:gap-6 sm:max-w-4xl">
           {displayedImages.map((image, index) => (
             <div 
               key={`${image.id}-${index}`}
@@ -112,8 +120,13 @@ export default function Gallery() {
               <img 
                 src={image.src} 
                 alt={image.alt} 
-                className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
+                className="w-full h-48 sm:h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="eager"
+                decoding="async"
+                style={{ 
+                  imageRendering: 'optimizeSpeed',
+                  transform: 'translateZ(0)'
+                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-4 left-4 right-4">

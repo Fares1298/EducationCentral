@@ -1,14 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Link } from "wouter";
 import collegeLogo from "@/assets/college-logo.png";
 
 const quickLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#programs", label: "Courses" },
-  { href: "#about", label: "About Us" },
-  { href: "#gallery", label: "Gallery" },
-  { href: "#contact", label: "Contact" },
+  { href: "/", label: "Home", isLink: true },
+  { href: "/courses", label: "Courses", isLink: true },
+  { href: "#gallery", label: "Gallery", isLink: false },
+  { href: "#programs", label: "Programs", isLink: false },
+  { href: "#contact", label: "Contact", isLink: false },
 ];
 
 const programs = [
@@ -82,16 +83,24 @@ export default function Footer() {
             <ul className="space-y-2">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection(link.href);
-                    }}
-                    className="text-[#a8c7dc] hover:text-[#f39c12] transition-colors"
-                  >
-                    {link.label}
-                  </a>
+                  {link.isLink ? (
+                    <Link href={link.href}>
+                      <a className="text-[#a8c7dc] hover:text-[#f39c12] transition-colors">
+                        {link.label}
+                      </a>
+                    </Link>
+                  ) : (
+                    <a 
+                      href={link.href}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        scrollToSection(link.href);
+                      }}
+                      className="text-[#a8c7dc] hover:text-[#f39c12] transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
