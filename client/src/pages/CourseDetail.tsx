@@ -7,6 +7,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { CourseType } from "@shared/schema";
+import { staticCoursesData } from "@/data/courses";
 
 export default function CourseDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -14,11 +15,18 @@ export default function CourseDetail() {
   const { data: courseData, isLoading, error, isError } = useQuery<{ success: boolean, data: CourseType }>({ 
     queryKey: ["/api/courses", slug],
     enabled: !!slug,
-    retry: 3,
-    refetchOnWindowFocus: false
+    retry: 2, // Faster fallback
+    refetchOnWindowFocus: false,
+    retryDelay: 1000
   });
   
-  const course = courseData?.data;
+  // Use API data if available, otherwise fall back to static data
+  const course = courseData?.data || staticCoursesData.find(c => c.slug === slug);
+  
+  // Log data source for debugging
+  if (course) {
+    console.log(`Course detail loaded from: ${courseData?.data ? 'API' : 'static data'} for slug: ${slug}`);
+  }
   
   // Find related courses (to be implemented)
   const showSimilarCourses = false;
@@ -59,9 +67,9 @@ export default function CourseDetail() {
             <FontAwesomeIcon icon={faSpinner} className="animate-spin text-4xl text-[#172f4f]" />
             <p className="mt-4 text-[#2c5282]">Loading course details...</p>
           </div>
-        ) : isError || error ? (
+        ) : !course ? (
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-            <h2 className="text-2xl font-bold text-red-500 mb-4">Error Loading Course</h2>
+            <h2 className="text-2xl font-bold text-red-500 mb-4">Course Not Found</h2>
             <p className="text-[#2c5282] mb-8">
               We couldn't find the course "{slug}". Please try another course or go back to the courses page.
             </p>
@@ -74,7 +82,7 @@ export default function CourseDetail() {
               </Link>
             </div>
           </div>
-        ) : course ? (
+        ) : (
           <>
             {/* Course Header */}
             <section className="bg-[#172f4f] text-white py-16">
@@ -224,17 +232,6 @@ export default function CourseDetail() {
               </section>
             )}
           </>
-        ) : (
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-            <h2 className="text-2xl font-bold text-red-500 mb-4">Course Not Found</h2>
-            <p className="text-[#2c5282] mb-8">We couldn't find the course you're looking for.</p>
-            <Link href="/courses">
-              <Button className="bg-[#172f4f] hover:bg-[#0b1a2f]">
-                <FontAwesomeIcon icon={faArrowLeft} className="mr-2" />
-                Back to All Courses
-              </Button>
-            </Link>
-          </div>
         )}
       </main>
       

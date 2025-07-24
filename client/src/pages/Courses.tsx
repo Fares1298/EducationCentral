@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CourseType } from "@shared/schema";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { staticCoursesData } from "@/data/courses";
 
 // Map course slugs to icons
 const courseIcons: Record<string, IconDefinition> = {
@@ -37,26 +38,30 @@ export default function Courses() {
   
   const { data: coursesData, isLoading, error, isError } = useQuery<{ success: boolean, data: CourseType[] }>({ 
     queryKey: ["/api/courses"],
-    retry: 3,
+    retry: 2, // Reduce retries to fail faster and use fallback
     refetchOnWindowFocus: false,
     staleTime: 5 * 60 * 1000, // 5 minutes
     gcTime: 10 * 60 * 1000, // 10 minutes
-    retryDelay: attemptIndex => Math.min(1000 * 2 ** attemptIndex, 30000)
+    retryDelay: 1000 // Faster retry for quicker fallback
   });
 
-  // Log success/error outside the query
-  if (coursesData && !isLoading) {
-    console.log('Courses loaded successfully:', coursesData?.data?.length || 0, 'courses');
-  }
-  if (isError && error) {
-    console.error('Courses query failed:', error);
-  }
+  // Use API data if available, otherwise fall back to static data
+  const coursesArray = useMemo(() => {
+    if (coursesData?.success && coursesData?.data) {
+      console.log('Using API data:', coursesData.data.length, 'courses');
+      return coursesData.data;
+    } else if (!isLoading) {
+      console.log('Using static fallback data:', staticCoursesData.length, 'courses');
+      return staticCoursesData;
+    }
+    return [];
+  }, [coursesData, isLoading]);
   
   // Filter courses based on search term
-  const filteredCourses = coursesData?.data ? coursesData.data.filter((course: CourseType) => 
+  const filteredCourses = coursesArray.filter((course: CourseType) => 
     course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     course.overview.toLowerCase().includes(searchTerm.toLowerCase())
-  ) : [];
+  );
   
   return (
     <>
@@ -100,7 +105,7 @@ export default function Courses() {
             </div>
             
             {/* Course List */}
-            {isLoading ? (
+            {isLoading && coursesArray.length === 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {Array.from({ length: 6 }).map((_, index) => (
                   <div key={index} className="bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden h-full animate-pulse">
@@ -120,14 +125,9 @@ export default function Courses() {
                   </div>
                 ))}
               </div>
-            ) : isError || error ? (
+            ) : coursesArray.length === 0 && isError ? (
               <div className="text-center py-20">
-                <p className="text-red-500 mb-4">Failed to load courses. Please try again later.</p>
-                {error && (
-                  <div className="text-sm text-gray-600 bg-gray-100 p-4 rounded-lg max-w-lg mx-auto">
-                    <p><strong>Error details:</strong> {error.message}</p>
-                  </div>
-                )}
+                <p className="text-red-500 mb-4">Unable to load courses at the moment.</p>
                 <button 
                   onClick={() => window.location.reload()} 
                   className="mt-4 px-6 py-2 bg-[#172f4f] text-white rounded-lg hover:bg-[#0b1a2f] transition-colors"

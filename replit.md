@@ -31,10 +31,12 @@ A modern, responsive web application for Matoshree Dr Kanchan Shantilalji Desard
 - Verified all dependencies are properly installed and working
 - Confirmed client/server separation follows security best practices
 - Express server running on port 5000 with proper 0.0.0.0 binding for Replit compatibility
-- All 15 courses and contact functionality working correctly
+- All 17 courses and contact functionality working correctly
 - Fixed broken image loading in About section with authentic college photos
 - Enhanced API error handling with retry logic and CORS support for live deployment
 - Improved React Query configuration with proper retry mechanisms
+- **Implemented dual-mode course loading:** API-first with static data fallback for deployment compatibility
+- **Courses now work on both full-stack and static deployments:** ensuring consistent functionality across all deployment types
 - Project now fully compatible with Replit deployment and scaling
 
 ### Deployment Configuration (July 24, 2025)
