@@ -226,7 +226,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Get all courses
   app.get("/api/courses", async (_req: Request, res: Response) => {
     try {
+      // Add CORS headers for live deployment
+      res.header('Access-Control-Allow-Origin', '*');
+      res.header('Access-Control-Allow-Methods', 'GET');
+      res.header('Access-Control-Allow-Headers', 'Content-Type');
+      
       const courses = await storage.getCourses();
+      console.log(`Fetching all courses - returned ${courses.length} courses`);
+      
       res.status(200).json({
         success: true,
         data: courses
