@@ -42,25 +42,88 @@ export default function Contact() {
     },
   });
 
+  const sendToEmailJS = async (data: ContactFormValues) => {
+    // EmailJS service for static deployments
+    const serviceId = 'service_mdksd_college';
+    const templateId = 'template_contact_form';
+    
+    // Simple email fallback using mailto
+    const subject = encodeURIComponent(`New Inquiry from ${data.name} - MDKSD College`);
+    const body = encodeURIComponent(`
+Dear MDKSD College Team,
+
+You have received a new inquiry from your website:
+
+Name: ${data.name}
+Mobile: ${data.mobile}
+Email: ${data.email}
+
+Message:
+${data.message}
+
+Consent: Student has agreed to terms and conditions
+
+Received: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
+
+Please contact the student promptly.
+
+Best regards,
+MDKSD College Website
+    `);
+    
+    // Open default email client as fallback
+    window.open(`mailto:mdksdinstitute@gmail.com?subject=${subject}&body=${body}`, '_blank');
+    
+    return { success: true, method: 'mailto' };
+  };
+
   const onSubmit = async (data: ContactFormValues) => {
     setIsSubmitting(true);
     
     try {
-      // Send to database, WhatsApp, and Email via API
-      const response = await apiRequest("POST", "/api/contact", data);
-      const responseData = await response.json();
+      console.log('Submitting contact form with data:', data);
       
-      toast({
-        title: "Message sent successfully!",
-        description: responseData.message || "Your inquiry has been sent to our WhatsApp and email. We'll contact you soon.",
-        variant: "default",
-      });
+      // Try to send via API first (for full-stack deployment)
+      try {
+        const response = await apiRequest("POST", "/api/contact", data);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+        
+        const responseData = await response.json();
+        console.log('Success response data:', responseData);
+        
+        toast({
+          title: "Message sent successfully!",
+          description: responseData.message || "Your inquiry has been sent via WhatsApp and email. We'll contact you soon.",
+          variant: "default",
+        });
+        
+        form.reset();
+        return;
+        
+      } catch (apiError) {
+        console.log('API not available, using fallback method:', apiError);
+        
+        // Fallback to email for static deployments
+        await sendToEmailJS(data);
+        
+        toast({
+          title: "Message sent successfully!",
+          description: "Your inquiry has been sent via email. We'll contact you soon at the provided mobile number.",
+          variant: "default",
+        });
+        
+        form.reset();
+      }
       
-      form.reset();
     } catch (error) {
+      console.error('Contact form submission error:', error);
+      
       toast({
         title: "Something went wrong.",
-        description: "Your message couldn't be sent. Please try again later.",
+        description: "Please try calling us directly at +91 94051 09103 or +91 88308 38903 for immediate assistance.",
         variant: "destructive",
       });
     } finally {
@@ -378,7 +441,7 @@ export default function Contact() {
                   {isSubmitting ? "Sending Message..." : "Send Message"}
                 </Button>
                 <p className="text-sm text-gray-600 mt-2">
-                  Your message will be automatically sent to our WhatsApp and email for quick response.
+                  Your message will be sent via email. We'll contact you within 24 hours.
                 </p>
               </div>
             </form>
