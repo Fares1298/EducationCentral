@@ -28,102 +28,102 @@ async function sendEmailNotification(data: InsertContactSubmission) {
     // Set SendGrid API key
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-    // Create professional email content
-    const emailContent = `
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <style>
-            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
-            .container { max-width: 600px; margin: 0 auto; background: #ffffff; }
-            .header { background-color: #172f4f; color: white; padding: 30px 20px; text-align: center; }
-            .content { padding: 30px 20px; }
-            .info-card { margin: 15px 0; padding: 15px; background: #f8f9fa; border-left: 4px solid #f4743e; border-radius: 4px; }
-            .label { font-weight: bold; color: #172f4f; display: inline-block; min-width: 80px; }
-            .value { color: #2c5282; }
-            .footer { background: #f8f9fa; padding: 20px; text-align: center; color: #666; border-top: 1px solid #dee2e6; }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="header">
-                <h1 style="margin: 0; font-size: 24px;">🎓 New Website Inquiry</h1>
-                <p style="margin: 10px 0 0 0; opacity: 0.9;">Matoshree Dr Kanchan Shantilalji Desarda Mahavidyalya</p>
-            </div>
-            <div class="content">
-                <div class="info-card">
-                    <span class="label">Name:</span>
-                    <span class="value">${data.name}</span>
-                </div>
-                <div class="info-card">
-                    <span class="label">Mobile:</span>
-                    <span class="value">${data.mobile}</span>
-                </div>
-                <div class="info-card">
-                    <span class="label">Email:</span>
-                    <span class="value">${data.email}</span>
-                </div>
-                <div class="info-card">
-                    <span class="label">Message:</span>
-                    <div style="margin-top: 8px; color: #2c5282;">${data.message}</div>
-                </div>
-                <div class="info-card">
-                    <span class="label">Consent:</span>
-                    <span class="value">${data.consent ? 'Given ✅' : 'Not given ❌'}</span>
-                </div>
-                <div class="info-card">
-                    <span class="label">Received:</span>
-                    <span class="value">${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</span>
-                </div>
-            </div>
-            <div class="footer">
-                <p style="margin: 0;">This inquiry was submitted through the college website contact form.</p>
-                <p style="margin: 5px 0 0 0;">Please respond promptly to maintain good customer service.</p>
-            </div>
+    // Create email content
+    const emailHtml = `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #f9f9f9; padding: 20px;">
+        <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+          <div style="text-align: center; margin-bottom: 30px;">
+            <h1 style="color: #172f4f; margin: 0; font-size: 24px;">🎓 New Student Inquiry</h1>
+            <p style="color: #666; margin: 5px 0 0 0;">MDKSD Paramedical College</p>
+          </div>
+          
+          <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+            <h3 style="color: #172f4f; margin: 0 0 15px 0;">Student Details</h3>
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr>
+                <td style="padding: 8px 0; color: #555; font-weight: bold;">👤 Name:</td>
+                <td style="padding: 8px 0; color: #333;">${data.name}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; color: #555; font-weight: bold;">📧 Email:</td>
+                <td style="padding: 8px 0; color: #333;">${data.email}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; color: #555; font-weight: bold;">📱 Mobile:</td>
+                <td style="padding: 8px 0; color: #333;">${data.mobile}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; color: #555; font-weight: bold;">📅 Time:</td>
+                <td style="padding: 8px 0; color: #333;">${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</td>
+              </tr>
+            </table>
+          </div>
+          
+          <div style="background: #e3f2fd; padding: 20px; border-radius: 8px; border-left: 4px solid #2196f3;">
+            <h3 style="color: #172f4f; margin: 0 0 10px 0;">💬 Message</h3>
+            <p style="margin: 0; color: #333; line-height: 1.6;">${data.message}</p>
+          </div>
+          
+          <div style="margin-top: 20px; padding: 15px; background: #e8f5e8; border-radius: 8px; text-align: center;">
+            <p style="margin: 0; color: #2e7d32; font-size: 14px;">
+              ✅ Student has consented to terms and conditions
+            </p>
+          </div>
+          
+          <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
+            <p style="color: #666; font-size: 12px; margin: 0;">
+              This email was sent from your college website contact form<br>
+              Matoshree Dr Kanchan Shantilalji Desarda Mahavidyalya
+            </p>
+          </div>
         </div>
-    </body>
-    </html>`;
+      </div>
+    `;
 
-    // Use the verified sender email address
-    const senderConfigurations = [
-      // Primary: Use the verified sender email
-      'mdksdinstitute@gmail.com'
-    ];
+    const emailText = `
+New Student Inquiry - MDKSD Paramedical College
 
-    let lastError = null;
+Student Details:
+Name: ${data.name}
+Email: ${data.email}
+Mobile: ${data.mobile}
+Time: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
+
+Message:
+${data.message}
+
+Student has consented to terms and conditions.
+
+This inquiry was submitted through your college website contact form.
+    `;
+
+    const mailOptions = {
+      to: 'mdksdinstitute@gmail.com',
+      from: {
+        email: 'noreply@mdksd.edu',
+        name: 'MDKSD College Website'
+      },
+      subject: `🎓 New Student Inquiry from ${data.name} - MDKSD College`,
+      html: emailHtml,
+      text: emailText,
+      replyTo: data.email
+    };
+
+    // Send email
+    const [response] = await sgMail.send(mailOptions);
     
-    for (const fromEmail of senderConfigurations) {
-      try {
-        const emailData = {
-          to: 'mdksdinstitute@gmail.com',
-          from: {
-            email: fromEmail,
-            name: 'MDKSD College Website'
-          },
-          subject: `🎓 New Inquiry from ${data.name} - MDKSD College`,
-          html: emailContent,
-          text: `New inquiry from ${data.name}\nMobile: ${data.mobile}\nEmail: ${data.email}\nMessage: ${data.message}\nConsent: ${data.consent ? 'Given' : 'Not given'}\nReceived: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}`
-        };
-
-        const result = await sgMail.send(emailData);
-        
-        console.log(`✅ Email sent successfully via SendGrid using sender: ${fromEmail}`);
-        console.log(`📧 SendGrid Response:`, JSON.stringify(result[0], null, 2));
-        console.log(`📧 Message ID:`, result[0].headers['x-message-id']);
-        console.log(`📧 Email delivered to: mdksdinstitute@gmail.com`);
-        console.log(`📧 Check: Gmail inbox, spam folder, promotions tab`);
-        
-        return { success: true, method: 'sendgrid', messageId: result[0].headers['x-message-id'] || `email_${Date.now()}`, sender: fromEmail };
-        
-      } catch (error: any) {
-        console.log(`❌ Failed to send with sender ${fromEmail}:`, error.message);
-        lastError = error;
-        continue;
-      }
-    }
+    console.log("✅ Email sent successfully!");
+    console.log("Email ID:", response.headers['x-message-id'] || 'N/A');
+    console.log("Status:", response.statusCode);
     
-    // If all configurations failed, throw the last error
-    throw lastError;
+    return { 
+      success: true, 
+      method: 'sendgrid',
+      messageId: response.headers['x-message-id'] || `email_${Date.now()}`,
+      statusCode: response.statusCode
+    };
+
+
 
   } catch (error) {
     console.error("❌ Failed to send email notification:", error);

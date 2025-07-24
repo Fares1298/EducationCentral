@@ -84,10 +84,11 @@ export default function Footer() {
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   {link.isLink ? (
-                    <Link href={link.href}>
-                      <a className="text-[#a8c7dc] hover:text-[#f39c12] transition-colors">
-                        {link.label}
-                      </a>
+                    <Link 
+                      href={link.href}
+                      className="text-[#a8c7dc] hover:text-[#f39c12] transition-colors"
+                    >
+                      {link.label}
                     </Link>
                   ) : (
                     <a 
