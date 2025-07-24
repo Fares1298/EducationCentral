@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import practicalTraining from "@assets/../gallery_photos/practical_training.jpg";
 
 interface Feature {
   id: number;
@@ -47,7 +48,7 @@ export default function About() {
           
           <div className="relative">
             <img 
-              src="https://pixabay.com/get/gfe49b81c24e2492a924d18a832a40842bd7e2d9a4be3ebc2b3e7470080a6bde6ace7dcdc94a9962518f42ad2709db77f1653a7899b8efd9dbff160cfc09ab397_1280.jpg" 
+              src={practicalTraining} 
               alt="Faculty instructing students" 
               className="rounded-lg shadow-xl w-full h-auto object-cover"
               loading="lazy"
