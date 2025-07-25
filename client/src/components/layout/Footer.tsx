@@ -150,10 +150,26 @@ export default function Footer() {
         </div>
         
         {/* Copyright */}
-        <div className="border-t border-[#2c5282]/40 mt-8 pt-8 text-center">
-          <p className="text-[#a8c7dc]">
-            &copy; {new Date().getFullYear()} Matoshree Dr Kanchan Shantilalji Desarda Mahavidyalya. All rights reserved.
-          </p>
+        <div className="border-t border-[#2c5282]/40 mt-8 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <p className="text-[#a8c7dc] text-center md:text-left">
+              &copy; {new Date().getFullYear()} Matoshree Dr Kanchan Shantilalji Desarda Mahavidyalya. All rights reserved.
+            </p>
+            <div className="flex space-x-6">
+              <Link 
+                href="/privacy-policy" 
+                className="text-[#a8c7dc] hover:text-[#f39c12] transition-colors text-sm"
+              >
+                Privacy Policy
+              </Link>
+              <Link 
+                href="/terms-conditions" 
+                className="text-[#a8c7dc] hover:text-[#f39c12] transition-colors text-sm"
+              >
+                Terms & Conditions
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
