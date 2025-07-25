@@ -1,38 +1,46 @@
 # Deployment Guide
 
-This project is structured for easy deployment on various platforms while maintaining proper client/server separation.
+This project supports **dual-mode deployment**: both full-stack (with backend API) and static-only deployment.
 
 ## Current Project Structure
 ```
 ├── client/                 # Frontend files
 │   ├── index.html         # HTML entry point
-│   └── src/               # React source code
-├── server/                # Backend API
+│   └── src/               # React source code with static data fallback
+├── server/                # Backend API (optional for static deployment)
 ├── shared/                # Shared types/schemas
 ├── package.json           # Dependencies and scripts
 └── vite.config.ts         # Build configuration
 ```
 
+## Key Features for Static Deployment
+- **Automatic Fallback**: Courses load from API when available, otherwise use embedded static data
+- **All 17 courses**: Fully functional course catalog without backend
+- **Contact Form**: Works with mailto fallback for static deployment
+- **Search and Filters**: Client-side search functionality works offline
+
 ## Deployment Options
 
-### Option 1: Vercel (Frontend Only - Recommended for Static Site)
-**Important**: This deployment serves only the frontend as a static site. The contact form and course data will work with the pre-loaded data.
+### Option 1: Vercel (Static - Recommended)
+**Perfect for static deployment with built-in course data**
 
-1. The included `vercel.json` configures the build properly
-2. Upload the entire project to Vercel
-3. Vercel will build and serve the static frontend
-4. All course information and basic functionality will work
+1. Upload entire project to Vercel
+2. Vercel automatically detects the build configuration
+3. Build command: `npm run build` 
+4. Output directory: `dist/public`
+5. All 17 courses display from embedded static data
 
 ### Option 2: Netlify
-1. The included `netlify.toml` configures the deployment
-2. Upload the entire project to Netlify
-3. Build command: `npm run build`
-4. Publish directory: `dist/public`
+1. Upload project to Netlify
+2. Build command: `npm run build`
+3. Publish directory: `dist/public`
+4. Uses embedded course data for static deployment
 
 ### Option 3: Traditional Hosting
-1. Run `npm run build` to create production files
-2. Upload the `dist/public` folder contents to your web server
-3. Configure your server to serve `index.html` for all routes (SPA routing)
+1. Run `npm run build` locally
+2. Upload entire `dist/public` folder to your web server  
+3. Configure server to serve `index.html` for all routes (SPA routing)
+4. Courses work from embedded static data
 
 ## Build Process
 - Frontend builds to: `dist/public/`

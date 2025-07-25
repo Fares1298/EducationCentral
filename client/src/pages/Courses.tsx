@@ -36,6 +36,9 @@ const courseIcons: Record<string, IconDefinition> = {
 export default function Courses() {
   const [searchTerm, setSearchTerm] = useState("");
   
+  // Debug: log static data availability
+  console.log('Static courses data available:', staticCoursesData.length);
+  
   const { data: coursesData, isLoading, error, isError } = useQuery<{ success: boolean, data: CourseType[] }>({ 
     queryKey: ["/api/courses"],
     retry: 2, // Reduce retries to fail faster and use fallback
@@ -50,12 +53,11 @@ export default function Courses() {
     if (coursesData?.success && coursesData?.data) {
       console.log('Using API data:', coursesData.data.length, 'courses');
       return coursesData.data;
-    } else if (!isLoading) {
+    } else {
       console.log('Using static fallback data:', staticCoursesData.length, 'courses');
       return staticCoursesData;
     }
-    return [];
-  }, [coursesData, isLoading]);
+  }, [coursesData]);
   
   // Filter courses based on search term
   const filteredCourses = coursesArray.filter((course: CourseType) => 
@@ -105,7 +107,7 @@ export default function Courses() {
             </div>
             
             {/* Course List */}
-            {isLoading && coursesArray.length === 0 ? (
+            {isLoading && !coursesData && staticCoursesData.length === 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {Array.from({ length: 6 }).map((_, index) => (
                   <div key={index} className="bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden h-full animate-pulse">
@@ -125,9 +127,9 @@ export default function Courses() {
                   </div>
                 ))}
               </div>
-            ) : coursesArray.length === 0 && isError ? (
+            ) : coursesArray.length === 0 ? (
               <div className="text-center py-20">
-                <p className="text-red-500 mb-4">Unable to load courses at the moment.</p>
+                <p className="text-red-500 mb-4">No courses available at the moment.</p>
                 <button 
                   onClick={() => window.location.reload()} 
                   className="mt-4 px-6 py-2 bg-[#172f4f] text-white rounded-lg hover:bg-[#0b1a2f] transition-colors"
