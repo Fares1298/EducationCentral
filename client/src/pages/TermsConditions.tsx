@@ -54,12 +54,19 @@ export default function TermsConditions() {
               
               <div className="mb-8">
                 <p className="text-[#2c5282] mb-6">
-                  <strong>Effective Date:</strong> January 1, 2025<br/>
-                  <strong>Last Updated:</strong> July 24, 2025
+                  <strong>Last Updated:</strong> January 25, 2025
                 </p>
               </div>
 
               <div className="space-y-8">
+                <div>
+                  <h2 className="font-heading font-bold text-2xl text-[#172f4f] mb-4">Opt-In</h2>
+                  <div className="text-[#2c5282] space-y-4">
+                    <p>Customer is agreeing to give consent to receive messages through SMS/Email/RCS/voice.</p>
+                    <p>Welcome to Desarda College! These Terms and Conditions ("Terms") govern your access to and use of our website, software, and services (collectively referred to as "Services"). By using our Services, you agree to comply with these Terms. Please read them carefully.</p>
+                  </div>
+                </div>
+
                 <div>
                   <h2 className="font-heading font-bold text-2xl text-[#172f4f] mb-4">1. Acceptance of Terms</h2>
                   <div className="text-[#2c5282] space-y-4">

@@ -54,12 +54,22 @@ export default function PrivacyPolicy() {
               
               <div className="mb-8">
                 <p className="text-[#2c5282] mb-6">
-                  <strong>Effective Date:</strong> January 1, 2025<br/>
-                  <strong>Last Updated:</strong> July 24, 2025
+                  <strong>Last Updated:</strong> January 25, 2025
                 </p>
               </div>
 
               <div className="space-y-8">
+                <div>
+                  <h2 className="font-heading font-bold text-2xl text-[#172f4f] mb-4">Consent</h2>
+                  <div className="text-[#2c5282] space-y-4">
+                    <p>Customer is agreeing to give consent to receive messages through SMS/Email/RCS/voice.</p>
+                    <p>At www.desardacollege.com, accessible from https://desardacollege.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by www.desardacollege.com and how we use it.</p>
+                    <p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.</p>
+                    <p>This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in www.desardacollege.com. This policy is not applicable to any information collected offline or via channels other than this website.</p>
+                    <p>By using our website, you hereby consent to our Privacy Policy and agree to its terms.</p>
+                  </div>
+                </div>
+
                 <div>
                   <h2 className="font-heading font-bold text-2xl text-[#172f4f] mb-4">1. Information We Collect</h2>
                   <div className="text-[#2c5282] space-y-4">
