@@ -1,7 +1,7 @@
 # Matoshree Dr Kanchan Shantilalji Desarda Mahavidyalya Website
 
 ## Project Overview
-A modern, responsive web application for Matoshree Dr Kanchan Shantilalji Desarda Mahavidyalya (MDKSD), a nursing and paramedical college in Sambhajinagar (Aurangabad), Maharashtra. The website showcases the college's academic programs, facilities, and provides information for prospective students.
+A modern, responsive web application for Matoshree Dr Kanchan Shantilalji Desarda Mahavidyalya (MDKSD), a nursing and paramedical college in Chhatrapati Sambhajinagar (Aurangabad), Maharashtra. The website showcases the college's academic programs, facilities, and provides information for prospective students.
 
 ## Tech Stack
 - **Frontend**: React.js with TypeScript, Vite build tool
@@ -26,15 +26,17 @@ A modern, responsive web application for Matoshree Dr Kanchan Shantilalji Desard
 
 ## Recent Changes
 
-### Project Migration (July 24, 2025)
+### Project Migration (July 26, 2025)
 - Successfully migrated project from Replit Agent to standard Replit environment
 - Verified all dependencies are properly installed and working
 - Confirmed client/server separation follows security best practices
 - Express server running on port 5000 with proper 0.0.0.0 binding for Replit compatibility
 - All 17 courses and contact functionality working correctly
-- Fixed broken image loading in About section with authentic college photos
+- Fixed React style prop errors in iframe elements for proper TypeScript compatibility
+- Updated all iframe attributes (allowFullScreen, referrerPolicy) to React standards
 - Enhanced API error handling with retry logic and CORS support for live deployment
 - Improved React Query configuration with proper retry mechanisms
+- **Updated college address throughout entire codebase:** Behind Bibika Maqbara, Hanuman Tekdi Jawal, Pahadsingpura, Chhatrapati Sambhajinagar (Aurangabad), Maharashtra 431004
 - **Implemented dual-mode course loading:** API-first with static data fallback for deployment compatibility
 - **Courses now work on both full-stack and static deployments:** ensuring consistent functionality across all deployment types
 - Project now fully compatible with Replit deployment and scaling
@@ -186,4 +188,4 @@ The college now offers 15 comprehensive programs:
 
 ## Contact Information
 - Phone: 9405109103, 8830838903
-- Address: Behind Bibika Maqbara, Hanuman Tekdi Jawal, Pahadsingpura, Sambhajinagar (Aurangabad), Maharashtra
+- Address: Behind Bibika Maqbara, Hanuman Tekdi Jawal, Pahadsingpura, Chhatrapati Sambhajinagar (Aurangabad), Maharashtra 431004

@@ -38,7 +38,7 @@ export default function Home() {
       <Helmet>
         <title>Matoshree Dr Kanchan Shantilalji Desarda Mahavidyalya</title>
         <meta name="description" content="Empowering Future Healthcare Leaders with Excellence in Nursing & Allied Sciences. UGC-approved programs, flexible learning modes, and hands-on clinical training." />
-        <meta name="keywords" content="nursing college, allied health education, medical education, healthcare college, Aurangabad" />
+        <meta name="keywords" content="nursing college, allied health education, medical education, healthcare college, Chhatrapati Sambhajinagar, Aurangabad" />
       </Helmet>
       
       <Header />

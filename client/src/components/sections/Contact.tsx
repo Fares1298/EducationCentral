@@ -313,7 +313,7 @@ MDKSD College Website
                                 
                                 <div>
                                   <h3 className="font-semibold text-[#172f4f] mb-2">10. Governing Law</h3>
-                                  <p>These terms and conditions are governed by the laws of India and subject to the jurisdiction of courts in Sambhajinagar (Aurangabad), Maharashtra.</p>
+                                  <p>These terms and conditions are governed by the laws of India and subject to the jurisdiction of courts in Chhatrapati Sambhajinagar (Aurangabad), Maharashtra.</p>
                                 </div>
                                 
                                 <div className="border-t pt-4 mt-6">
@@ -416,7 +416,7 @@ MDKSD College Website
                                   <p className="text-xs text-gray-500">
                                     Last updated: January 2025<br />
                                     For privacy-related queries, contact us at mdksdinstitute@gmail.com<br />
-                                    Address: Behind Bibika Maqbara, Hanuman Tekdi Jawal, Pahadsingpura, Sambhajinagar (Aurangabad), Maharashtra
+                                    Address: Behind Bibika Maqbara, Hanuman Tekdi Jawal, Pahadsingpura, Chhatrapati Sambhajinagar (Aurangabad), Maharashtra 431004
                                   </p>
                                 </div>
                               </div>
@@ -459,8 +459,9 @@ MDKSD College Website
                   <FontAwesomeIcon icon={faMapMarkerAlt} className="text-[#3c6e71]" />
                 </div>
                 <div>
-                  <p className="text-[#457b9d]">Behind Bibi Ka Maqbara,</p>
-                  <p className="text-[#457b9d]">Aurangabad-431001</p>
+                  <p className="text-[#457b9d]">Behind Bibika Maqbara, Hanuman Tekdi Jawal,</p>
+                  <p className="text-[#457b9d]">Pahadsingpura, Chhatrapati Sambhajinagar (Aurangabad),</p>
+                  <p className="text-[#457b9d]">Maharashtra 431004</p>
                 </div>
               </div>
               

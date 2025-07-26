@@ -3,7 +3,7 @@ export const COLLEGE_SHORT_NAME = "MDKSD";
 export const COLLEGE_TAGLINE = "Empowering Future Healthcare Leaders";
 export const COLLEGE_EMAIL = "mdksdinstitute@gmail.com";
 export const COLLEGE_PHONE = "+91 94051 09103";
-export const COLLEGE_ADDRESS = "Behind Bibi Ka Maqbara, Aurangabad-431001";
+export const COLLEGE_ADDRESS = "Behind Bibika Maqbara, Hanuman Tekdi Jawal, Pahadsingpura, Chhatrapati Sambhajinagar (Aurangabad), Maharashtra 431004";
 export const COLLEGE_HOURS = "Mon–Sun, 10 AM–6:30 PM";
 
 // Colors extracted from the college logo

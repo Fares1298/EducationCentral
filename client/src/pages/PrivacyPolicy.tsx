@@ -185,7 +185,7 @@ export default function PrivacyPolicy() {
                     <div className="bg-[#f1faff] p-6 rounded-lg">
                       <p><strong>Matoshree Dr Kanchan Shantilalji Desarda Mahavidyalya</strong></p>
                       <p>Behind Bibika Maqbara, Hanuman Tekdi Jawal</p>
-                      <p>Pahadsingpura, Sambhajinagar (Aurangabad), Maharashtra</p>
+                      <p>Pahadsingpura, Chhatrapati Sambhajinagar (Aurangabad), Maharashtra 431004</p>
                       <p>Phone: +91 94051 09103, +91 88308 38903</p>
                       <p>Email: info@desardacollege.com</p>
                     </div>

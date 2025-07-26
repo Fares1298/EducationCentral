@@ -204,7 +204,7 @@ export default function TermsConditions() {
                 <div>
                   <h2 className="font-heading font-bold text-2xl text-[#172f4f] mb-4">11. Governing Law and Disputes</h2>
                   <div className="text-[#2c5282] space-y-4">
-                    <p>These terms are governed by the laws of Maharashtra, India. Any disputes will be subject to the jurisdiction of courts in Aurangabad, Maharashtra.</p>
+                    <p>These terms are governed by the laws of Maharashtra, India. Any disputes will be subject to the jurisdiction of courts in Chhatrapati Sambhajinagar (Aurangabad), Maharashtra.</p>
                     <p>We encourage resolving any concerns through direct communication with our administrative staff before pursuing formal legal action.</p>
                   </div>
                 </div>
@@ -216,7 +216,7 @@ export default function TermsConditions() {
                     <div className="bg-[#f1faff] p-6 rounded-lg">
                       <p><strong>Matoshree Dr Kanchan Shantilalji Desarda Mahavidyalya</strong></p>
                       <p>Behind Bibika Maqbara, Hanuman Tekdi Jawal</p>
-                      <p>Pahadsingpura, Sambhajinagar (Aurangabad), Maharashtra</p>
+                      <p>Pahadsingpura, Chhatrapati Sambhajinagar (Aurangabad), Maharashtra 431004</p>
                       <p>Phone: +91 94051 09103, +91 88308 38903</p>
                       <p>Email: info@desardacollege.com</p>
                     </div>
