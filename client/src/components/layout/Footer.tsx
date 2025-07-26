@@ -56,7 +56,7 @@ export default function Footer() {
                 alt="MDKSD Paramedical College Logo" 
                 className="h-12 w-auto mr-3"
               />
-              <h3 className="font-heading font-bold text-xl">MDKSD</h3>
+              <h3 className="font-heading font-bold text-xl">Desarda College</h3>
             </div>
             <p className="text-[#a8c7dc] mb-4">
               Matoshree Dr Kanchan Shantilalji Desarda Mahavidyalya - Empowering Future Healthcare Leaders

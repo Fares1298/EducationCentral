@@ -70,7 +70,7 @@ export default function Header() {
               className="h-12 w-auto mr-3"
             />
             <div className="flex flex-col">
-              <span className="font-heading font-bold text-lg text-[#172f4f]">MDKSD</span>
+              <span className="font-heading font-bold text-lg text-[#172f4f]">Desarda College</span>
               <span className="hidden md:block text-xs text-[#2c5282]">
                 Paramedical College
               </span>

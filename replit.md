@@ -39,6 +39,7 @@ A modern, responsive web application for Matoshree Dr Kanchan Shantilalji Desard
 - **Updated college address throughout entire codebase:** Behind Bibika Maqbara, Hanuman Tekdi Jawal, Pahadsingpura, Chhatrapati Sambhajinagar (Aurangabad), Maharashtra 431004
 - **Updated copyright footer:** Copyright ©️ 2025 SHRI HASAN ISAK INAMDAR. All rights reserved.
 - **Temporarily commented out Google Maps integration** as requested
+- **Updated navbar name:** Changed from "MDKSD" to "Desarda College" in header and footer
 - **Implemented dual-mode course loading:** API-first with static data fallback for deployment compatibility
 - **Courses now work on both full-stack and static deployments:** ensuring consistent functionality across all deployment types
 - Project now fully compatible with Replit deployment and scaling
