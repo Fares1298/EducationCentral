@@ -502,7 +502,15 @@ MDKSD College Website
             {/* Map */}
             <div className="rounded-lg shadow-md overflow-hidden">
               <div className="h-[300px] relative">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3751.3098338717214!2d75.31956029999999!3d19.9113443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdb97fdc67bf0d5%3A0xc73c4b2fdfdaf9d1!2z4KSu4KS-4KSk4KWL4KS24KWN4KSw4KWAIOCkoeCliS7gpJXgpILgpJrgpKgg4KS24KS-4KSC4KSk4KWA4KSy4KS-4KSy4KSc4KWAIOCkpuClh-CkuOCksOCkoeCkviDgpK7gpLngpL7gpLXgpL_gpKbgpY3gpK_gpL7gpLLgpK8sIOCkm-CkpOCljeCksOCkquCkpOClgCDgpLjgpILgpK3gpL7gpJzgpYDgpKjgpJfgpLAgKOCklOCksOCkguCkl-CkvuCkrOCkvuCkpiku!5e0!3m2!1sen!2sin!4v1753508795647!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3751.3098338717214!2d75.31956029999999!3d19.9113443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdb97fdc67bf0d5%3A0xc73c4b2fdfdaf9d1!2z4KSu4KS-4KSk4KWL4KS24KWN4KSw4KWAIOCkoeCliS7gpJXgpILgpJrgpKgg4KS24KS-4KSC4KSk4KWA4KSy4KS-4KSy4KSc4KWAIOCkpuClh-CkuOCksOCkoeCkviDgpK7gpLngpL7gpLXgpL_gpKbgpY3gpK_gpL7gpLLgpK8sIOCkm-CkpOCljeCksOCkquCkpOClgCDgpLjgpILgpK3gpL7gpJzgpYDgpKjgpJfgpLAgKOCklOCksOCkguCkl-CkvuCkrOCkvuCkpiku!5e0!3m2!1sen!2sin!4v1753508795647!5m2!1sen!2sin" 
+                  width="600" 
+                  height="450" 
+                  style={{ border: 0 }} 
+                  allowFullScreen={true} 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
               <div className="bg-gradient-to-r from-[#f1faee] to-[#edf6f6] p-4 text-center">
                 <a 

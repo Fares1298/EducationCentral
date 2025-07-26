@@ -71,10 +71,10 @@ export default function Videos() {
                   title={video.title}
                   width="100%" 
                   height="100%"
-                  frameBorder="0" 
+                  style={{ border: 0 }} 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                   referrerPolicy="strict-origin-when-cross-origin" 
-                  allowFullScreen
+                  allowFullScreen={true}
                   className="absolute inset-0"
                 ></iframe>
               </div>
@@ -102,10 +102,10 @@ export default function Videos() {
                 title={collegeVideos[activeVideo].title}
                 width="100%" 
                 height="100%"
-                frameBorder="0" 
+                style={{ border: 0 }} 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                 referrerPolicy="strict-origin-when-cross-origin" 
-                allowFullScreen
+                allowFullScreen={true}
               ></iframe>
             </div>
             <div className="bg-white p-4 rounded-b-lg shadow-md">

@@ -124,7 +124,6 @@ export default function Gallery() {
                 loading="eager"
                 decoding="async"
                 style={{ 
-                  imageRendering: 'optimizeSpeed',
                   transform: 'translateZ(0)'
                 }}
               />
