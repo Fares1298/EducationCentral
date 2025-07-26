@@ -503,7 +503,7 @@ MDKSD College Website
             <div className="rounded-lg shadow-md overflow-hidden">
               <div className="h-[300px] relative">
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d29982.8941943432!2d75.31979945723444!3d19.873634249999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d19.8806642!2d75.3560346!4m3!3m2!1d19.865258299999998!2d75.317125!5e0!3m2!1sen!2sin!4v1747294257!5m2!1sen!2sin" 
+                  src="https://maps.app.goo.gl/TRHq4fgWyMRhmZjw5?g_st=ic" 
                   width="100%" 
                   height="100%" 
                   style={{ border: 0 }} 
